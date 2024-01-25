@@ -1,16 +1,8 @@
 const mongoose = require('mongoose'); 
 
-
 const patientSchema = new mongoose.Schema({
-    id: {
-        type: mongoose.Schema.Types.ObjectId,
-    },
-    token: {
-        type: mongoose.Schema.Types.String,
-    },
-    history: {
-        type: mongoose.Schema.Types.String,
-    }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    history:{type:String,required:true},
 })
 const patientModel = mongoose.model('patient', patientSchema)
 

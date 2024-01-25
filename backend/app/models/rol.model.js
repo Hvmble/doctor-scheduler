@@ -1,15 +1,9 @@
-const mongoose = require("moongose")
+const mongoose = require('mongoose');
 
-const rolSchema = new mongoose.Schema({
-    id: {
-        type: mongoose.Schema.Types.String,
-    },
-    name: {
-        type: mongoose.Schema.Types.String,
-        required: [true, "name rol is required"]
-    }
+const roleSchema = new mongoose.Schema({
+    name: { type: String, required: true, unique: true }
 })
 
 
-const rolModel = mongoose.model("rol", rolSchema)
-module.exports = rolModel
+const roleModel = mongoose.model("rol", roleSchema)
+module.exports = {roleModel}

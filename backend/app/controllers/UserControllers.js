@@ -27,8 +27,8 @@ const getUserById = async (req = request, res = response) => {
 }
 const createUser = async (req = request, res = response) => {
     try {
-        const { name, email, password, active, token } = req.body;
-        const document = await userModel.create({ name, email, password, active, token });
+        const { name, email, password, active, roleId } = req.body;
+        const document = await userModel.create({ name, email, password, active, role: roleId  });
         res.json({ message: 'ok', data: document })
 
     } catch (error) {
@@ -40,8 +40,8 @@ const createUser = async (req = request, res = response) => {
 const updateUser = async (req = request, res = response) => {
     try {
         const { id } = req.params;
-        const { name, email, password, active, token } = req.body;
-        const document = await userModel.findByIdAndUpdate(id, { name, email, password, active, token }, { new: true });
+        const { name, email, password, active, roleId } = req.body;
+        const document = await userModel.findByIdAndUpdate(id, { name, email, password, active, role: roleId }, { new: true });
         res.json({ message: 'ok', data: document })
 
     } catch (error) {
@@ -52,8 +52,7 @@ const updateUser = async (req = request, res = response) => {
 const deleteUser = async (req = request, res = response) => {
     try {
         const { id } = req.params;
-        const { active, } = req.body;
-        const document = await userModel.findByIdAndUpdate(id, { active }, { new: true });
+        const document = await userModel.findByIdAndDelete(id);
         res.json({ message: 'ok', data: document })
 
     } catch (error) {

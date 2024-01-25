@@ -30,6 +30,7 @@ class Server {
     routes() {
         this.app.use(this.path.users, require('../routes/users.routes'));
         this.app.use(this.path.doctors, require('../routes/doctors.routes'));
+        this.app.use(this.path.roles, require('../routes/roles.routes'));
     }
 
     start() {

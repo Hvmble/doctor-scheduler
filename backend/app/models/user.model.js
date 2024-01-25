@@ -16,9 +16,7 @@ const userSchema = new mongoose.Schema({
     active: {
         type: mongoose.Schema.Types.Boolean,
     },
-    token: {
-        type: mongoose.Schema.Types.String,
-    }
+    role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true }
 
 });
 

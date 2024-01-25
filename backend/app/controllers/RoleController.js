@@ -1,9 +1,9 @@
 const { request, response } = require('express');
-const { doctorModel } = require('../models/doctor.model');
+const { roleModel } = require('../models/rol.model');
 
-const getDoctors = async (req = request, res = response) => {
+const getRoles = async (req = request, res = response) => {
     try {
-        const documents = await doctorModel.find();
+        const documents = await roleModel.find();
         res.json({ message: 'success', data: documents });
     }
     catch (error) {
@@ -12,10 +12,10 @@ const getDoctors = async (req = request, res = response) => {
     }
 }
 
-const getDoctorById = async (req = request, res = response) => {
+const getRoleById = async (req = request, res = response) => {
     try {
         const { id } = req.params;
-        const document = await doctorModel.findById(id);
+        const document = await roleModel.findById(id);
         res.json({ message: 'success', data: document });
     }
     catch (error) {
@@ -24,21 +24,10 @@ const getDoctorById = async (req = request, res = response) => {
     }
 }
 
-const createDoctor = async (req = request, res = response) => {
+const createRole = async (req = request, res = response) => {
     try {
-        const {userId, specialty  } = req.body;
-        const document = await doctorModel.create({ user:userId, specialty });
-        res.json({ message: 'success', data: document });
-    }
-    catch (error) {
-        console.log(error)
-        res.status(500).json({ message: 'error', data: error });
-    }
-}
-const updateDoctor = async (req = request, res = response) => {
-    try {
-        const { userId, specialty } = req.body;
-        const document = await doctorModel.findByIdAndUpdate(id, { user:userId, specialty }, { new: true });
+        const { name } = req.body;
+        const document = await roleModel.create({ name });
         res.json({ message: 'success', data: document });
     }
     catch (error) {
@@ -47,10 +36,11 @@ const updateDoctor = async (req = request, res = response) => {
     }
 }
 
-const deleteDoctor = async (req = request, res = response) => {
+const updateRole = async (req = request, res = response) => {
     try {
         const { id } = req.params;
-        const document = await doctorModel.findByIdAndDelete(id);
+        const { name } = req.body;
+        const document = await roleModel.findByIdAndUpdate(id, { name }, { new: true });
         res.json({ message: 'success', data: document });
     }
     catch (error) {
@@ -59,4 +49,16 @@ const deleteDoctor = async (req = request, res = response) => {
     }
 }
 
-module.exports = { getDoctors, getDoctorById, createDoctor, updateDoctor, deleteDoctor };
+const deleteRole = async (req = request, res = response) => {
+    try {
+        const { id } = req.params;
+        const document = await roleModel.findByIdAndDelete(id);
+        res.json({ message: 'success', data: document });
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'error', data: error });
+    }
+}
+
+module.exports = { getRoles, getRoleById, createRole, updateRole, deleteRole }
