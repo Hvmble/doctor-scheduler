@@ -16,7 +16,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: ds_backend
-    env_file: ./backend/app/.env
+    env_file: ./backend/.env
     depends_on:
       - ds_database
     expose:
