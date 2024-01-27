@@ -1,9 +1,9 @@
-const { default: mongoose } = require("mongoose")
-const moongose = require("mongoose")
+const mongoose = require('mongoose');
 
-const doctorSchema = new moongose.Schema({
+const doctorSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    specialty: { type: String, required: true },
+    name: { type: mongoose.Schema.Types.String, required: true },
+    speciality: { type: mongoose.Schema.Types.String, required: true },
 })
-const doctorModel = mongoose.model('doctor', doctorSchema)
-module.exports = { doctorModel }
+const doctorModel = mongoose.model('Doctor', doctorSchema)
+module.exports =  doctorModel 

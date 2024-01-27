@@ -1,5 +1,5 @@
 const { request, response } = require('express');
-const { roleModel } = require('../models/rol.model');
+const roleModel  = require('../models/role.model');
 
 const getRoles = async (req = request, res = response) => {
     try {
