@@ -9,4 +9,4 @@ const appointmentSchema = mongoose.Schema({
     dateRegister: { type: mongoose.Schema.Types.Date },
 })
 const appointmentModel = mongoose.model('appointment', appointmentSchema)
-module.exports = { appointmentModel }
+module.exports =  appointmentModel 

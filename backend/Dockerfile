@@ -1,10 +1,10 @@
 # Utilice como imagen base node en su version 12
-FROM node:12-slim 
+FROM node:15-slim 
 # Carpeta en el contenedor - Donde reside la APP
-WORKDIR /usr/app
+WORKDIR /usr/
 # Copie el archivo de dependencias y paquetes
-COPY package.json /usr/app/package.json
-COPY package-lock.json /usr/app/package-lock.json
+COPY package.json /usr/package.json
+COPY package-lock.json /usr/package-lock.json
 # Se instalan las dependias -- ci: clean-install
 RUN npm ci
 # Copie el codigo fuente

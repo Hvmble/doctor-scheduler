@@ -1,0 +1,20 @@
+section.banner {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    background-image: url("../../public/loginbackgroundheader.png");
+    background-size: cover;
+
+    div.banner-content {
+        position: absolute;
+        top: 80px;
+        left: 150px;
+        h1{
+            color: var(--secondary-bg-color);
+        }
+        p {
+            color: white;
+        }
+    }
+
+}

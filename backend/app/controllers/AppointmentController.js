@@ -1,7 +1,7 @@
 const { request, response } = require('express');
 const doctorModel = require('../models/doctor.model');
 const patientModel = require('../models/patient.model');
-const { appointmentModel } = require('../models/appointment.model');
+const  appointmentModel  = require('../models/appointment.model');
 const userModel = require('../models/user.model');
 
 
@@ -106,4 +106,8 @@ const getAppointmentsDoctor = async (req = request, res = response) => {
         res.status(500).json({ message: 'Error retrieving appointments', data: error.message });
     }
 }
+
+
+
+
 module.exports = { getAppointments, getAppointmentById, createAppointment, updateAppointment, deleteAppointment,getAppointmentsPatient,getAppointmentsDoctor }
